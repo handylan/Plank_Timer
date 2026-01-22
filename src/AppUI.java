@@ -59,7 +59,7 @@ public class AppUI {
         frame.setSize(1080, 720);
         frame.setLayout(new BorderLayout());
 
-        timersPanel.setLayout(new GridLayout(2, 1));
+        timersPanel.setLayout(new GridLayout(2, 1, 10, 10));
 
         // Initialize UI components and layout here
         timerA = new IntervalTimer(0);
@@ -99,7 +99,7 @@ public class AppUI {
 
         // Timer A Panel
         timerAPanel = new JPanel();
-        timerAPanel.setLayout(new BorderLayout());
+        timerAPanel.setLayout(new FlowLayout());
         // Timer A Card Layout for input and display
         timerACardLayout = new CardLayout();
         timerACardPanel = new JPanel(timerACardLayout);
@@ -114,7 +114,7 @@ public class AppUI {
 
         // Timer B Panel
         timerBPanel = new JPanel();
-        timerBPanel.setLayout(new BorderLayout());
+        timerBPanel.setLayout(new FlowLayout());
         // Timer B Card Layout for input and display
         timerBCardLayout = new CardLayout();
         timerBCardPanel = new JPanel(timerBCardLayout);
@@ -127,30 +127,29 @@ public class AppUI {
         // Add Timer B panel to timers panel
         timersPanel.add(timerBPanel);
 
-        // Countdown Label
+        // Glass pane
         JPanel glass = new JPanel(null);
         glass.setOpaque(false);
-        countdownPanel.setOpaque(true);
+        frame.setGlassPane(glass);
 
+        // Countdown panel
+        countdownPanel = new JPanel(new BorderLayout());
+        countdownPanel.setBounds(340, 200, 400, 240);
+        countdownPanel.setBackground(new Color(0, 0, 0, 180));
+        countdownPanel.setVisible(false);
+
+        // Countdown label
+        countdownLabel = new JLabel("", JLabel.CENTER);
         countdownLabel.setFont(new Font("Arial", Font.BOLD, 192));
         countdownLabel.setForeground(Color.GREEN);
-        countdownLabel.setHorizontalAlignment(JLabel.CENTER);
-        countdownPanel.setBackground(new Color(0, 0, 0, 180)); // semi-transparent
-        countdownPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
-
-        countdownPanel.setBounds(
-            frame.getWidth() / 2 - 200,
-            frame.getHeight() / 2 - 120,
-            400,
-            240
-        );
-
-        countdownPanel.setLayout(new BorderLayout());
+        // Assemble ONCE
         countdownPanel.add(countdownLabel, BorderLayout.CENTER);
         glass.add(countdownPanel);
-        frame.setGlassPane(glass);
+
+        // Enable glass
         glass.setVisible(true);
+
         
         // Buttons
         startButton.addActionListener(e -> startPressed());
@@ -321,8 +320,8 @@ public class AppUI {
         }
 
         if(appState == AppState.COUNTDOWN) {
-            countdownPanel.setVisible(true);
             countdownLabel.setText(String.valueOf(countdown));
+            countdownPanel.setVisible(true);
         } else {
             countdownPanel.setVisible(false);
         }
