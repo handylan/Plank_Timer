@@ -135,13 +135,14 @@ public class AppUI {
         // Countdown panel
         countdownPanel = new JPanel(new BorderLayout());
         countdownPanel.setBounds(340, 200, 400, 240);
-        countdownPanel.setBackground(new Color(0, 0, 0, 180));
+        countdownPanel.setBackground(Color.WHITE);
+        countdownPanel.setOpaque(true);
         countdownPanel.setVisible(false);
 
         // Countdown label
         countdownLabel = new JLabel("", JLabel.CENTER);
         countdownLabel.setFont(new Font("Arial", Font.BOLD, 192));
-        countdownLabel.setForeground(Color.GREEN);
+        countdownLabel.setForeground(new Color(0, 153, 76));
 
         // Assemble ONCE
         countdownPanel.add(countdownLabel, BorderLayout.CENTER);
@@ -322,16 +323,18 @@ public class AppUI {
         if(appState == AppState.COUNTDOWN) {
             countdownLabel.setText(String.valueOf(countdown));
             countdownPanel.setVisible(true);
+            countdownPanel.revalidate();
+            countdownPanel.repaint();
         } else {
             countdownPanel.setVisible(false);
         }
 
         if(activeTimer == timerA && appState == AppState.RUNNING) {
-            timerALabel.setForeground(Color.GREEN);
+            timerALabel.setForeground(new Color(0, 153, 76));
             timerBLabel.setForeground(Color.BLACK);
         } else if(activeTimer == timerB && appState == AppState.RUNNING) {
             timerALabel.setForeground(Color.BLACK);
-            timerBLabel.setForeground(Color.GREEN);
+            timerBLabel.setForeground(new Color(0, 153, 76));
         }
     }
 }
