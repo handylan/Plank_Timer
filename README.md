@@ -1,18 +1,18 @@
-## Getting Started
+# Plank Timer
+Self made interval timer that repeat counting between training and rest timer
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Function
+- Two seperate timer to set training time and rest time
+- Start button: Start the timer after setting time or paused
+- Pause button to freeze the timer
+- Reset button to completely reset the timer to idle state (before time input)
+- Countdown before starting
+- Sound notification between timer swap and after countdown
+- Display error message if the input is out of bound
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+# Display
+- Idle
+- Countdown
+- Running
+- Paused
+- Error
